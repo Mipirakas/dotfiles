@@ -1,0 +1,7 @@
+*
+!.gitignore
+!.bash_aliases
+!scripts/
+!scripts/**
+!Documents/
+!Documents/**

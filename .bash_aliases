@@ -1,4 +1,5 @@
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+alias lt="exa -ahHlT"
 alias ll="exa -ahHl"
 alias monutil="watch -n1 \"sensors && echo ------------------------------------------ && cat /proc/cpuinfo | grep MHz && echo ------------------------------------------ && free -m\""
 alias pkgpurge="dpkg  --get-selections | grep deinstall | awk '{print \$1}' | xargs sudo apt purge -y"
