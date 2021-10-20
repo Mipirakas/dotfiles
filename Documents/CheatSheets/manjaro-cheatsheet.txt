@@ -1,0 +1,46 @@
+##### PAMAC #####
+
+### pamac update the packages (from repos or AUR) ###
+pamac checkupdates -a
+pamac upgrade -a
+
+### pamac clean cache ###
+pamac clean && pamac clean -b
+
+### pamac install package / pamac build package from AUR ###
+pamac install 'package'
+pamac build 'package from AUR'
+
+### pamac check for orphaned packages / remove orphaned packages ###
+pamac list -o
+pamac remove -o
+
+### pamac remove package (from repos or AUR) ###
+pamac remove -n 'package'
+### alternatively use pacman to remove package ###
+pacman -Rsn 'package'
+
+### pamac get info about package / package from AUR ###
+pamac info 'package'
+pamac info -a 'package'
+
+
+### general info ###
+# kernel #
+update kernel and linux headers to latest LTS
+
+# nvidia driver #
+check for nvidia driver updates in settings every once in a while
+
+## git maintainable packages in ~/Drivers & Themes ##
+# OpenCorsairlink #
+$ git pull
+$ make
+$ sudo make install
+
+# layan Themes #
+$ git pull
+$ ./install.sh
+
+##### MUST HAVE PACKAGES #####
+wireless_tools
