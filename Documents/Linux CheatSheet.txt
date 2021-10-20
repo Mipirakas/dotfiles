@@ -1,0 +1,36 @@
+### Commands:
+
+
+# check cpu frequency of all cores individually #
+cat /proc/cpuinfo | grep MHz
+
+# refresh sensors and reading of /proc/cpuinfo every second to monitor cpu temp, cpu frequency and memory ###
+watch -n1 "sensors && echo ------------------------------------------ && cat /proc/cpuinfo | grep MHz && echo ------------------------------------------ && free -m"
+
+# set cpu governor to powersave / performance #
+sudo bash -c 'for i in {0..11}; do cpufreq-set -c $i -g performance; done'
+
+# check cpu governor #
+sudo bash -c 'for i in {0..11}; do cat /sys/devices/system/cpu/cpu$i/cpufreq/scaling_governor; done'
+cpufreq-info
+
+# deletes all leftover junk from repo sync #
+find -name tmp_pack_* -delete
+
+# purge files left by previously installed packages #
+dpkg  --get-selections | grep deinstall | awk '{print $1}' | xargs sudo apt purge -y
+
+
+
+### Fixes:
+
+
+# Disable boot flag on windows EFI partition with parted before installing Ubuntu #
+
+# Add these 2 lines to /etc/default/grub #
+# Stop windows from getting added to GRUB
+GRUB_DISABLE_OS_PROBER=true
+
+# Disable spectre and meltdown mitigations in current boot session for performance gain #
+https://sleeplessbeastie.eu/2020/03/27/how-to-disable-mitigations-for-cpu-vulnerabilities
+https://wiki.ubuntu.com/Kernel/KernelBootParameters

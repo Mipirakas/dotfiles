@@ -1,0 +1,7 @@
+alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+alias ll="exa -ahHl"
+alias monutil="watch -n1 \"sensors && echo ------------------------------------------ && cat /proc/cpuinfo | grep MHz && echo ------------------------------------------ && free -m\""
+alias pkgpurge="dpkg  --get-selections | grep deinstall | awk '{print \$1}' | xargs sudo apt purge -y"
+alias pkgupdate="sudo apt update && sudo apt upgrade && sudo apt autoremove && sudo apt clean"
+alias plox="sudo \"$BASH\" -c \"\$(history -p !!)\""
+alias repoclean="find -name tmp_pack_* -delete"
