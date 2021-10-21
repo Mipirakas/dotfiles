@@ -1,3 +1,6 @@
+# Edit .bashrc: replace .bash_aliases with .bash_personal
+
+# Personal aliases
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias lt="exa -ahHlT"
 alias ll="exa -ahHl"
@@ -6,3 +9,6 @@ alias pkgpurge="dpkg  --get-selections | grep deinstall | awk '{print \$1}' | xa
 alias pkgupdate="sudo apt update && sudo apt upgrade && sudo apt autoremove && sudo apt clean"
 alias plox="sudo \"$BASH\" -c \"\$(history -p !!)\""
 alias repoclean="find -name tmp_pack_* -delete"
+
+# Terminal startup commands
+neofetch

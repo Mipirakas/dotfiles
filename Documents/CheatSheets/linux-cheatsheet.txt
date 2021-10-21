@@ -25,6 +25,14 @@ dpkg  --get-selections | grep deinstall | awk '{print $1}' | xargs sudo apt purg
 ### Fixes:
 
 
+# Force 5GHz band on specific network connection #
+# Locate the targeted WiFi connection profile in /etc/NetworkManager/system-connections/
+# Edit with sudo nano /etc/NetworkManager/system-connections/nameofconnection.nmconnection
+# Under section [wifi] add one of the following entrys:
+# 	for 2.4 GHz only: band=bg
+# 	for 5 GHz only: band=a
+# Save changes and restart NetworkManager
+
 # Disable boot flag on windows EFI partition with parted before installing Ubuntu #
 
 # Add these 2 lines to /etc/default/grub #

@@ -1,6 +1,6 @@
 *
 !.gitignore
-!.bash_aliases
+!.bash_personal
 !scripts/
 !scripts/**
 !Documents/
