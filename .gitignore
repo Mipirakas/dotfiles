@@ -1,7 +1,5 @@
-*
+/*
 !.gitignore
 !.bash_personal
 !scripts/
-!scripts/**
 !Documents/
-!Documents/**
