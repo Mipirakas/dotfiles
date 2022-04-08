@@ -4,7 +4,7 @@
 # check cpu frequency of all cores individually #
 cat /proc/cpuinfo | grep MHz
 
-# refresh sensors and reading of /proc/cpuinfo every second to monitor cpu temp, cpu frequency and memory ###
+# refresh sensors and reading of /proc/cpuinfo every second to monitor cpu temp, cpu frequency and memory #
 watch -n1 "sensors && echo ------------------------------------------ && cat /proc/cpuinfo | grep MHz && echo ------------------------------------------ && free -m"
 
 # set cpu governor to powersave / performance #
