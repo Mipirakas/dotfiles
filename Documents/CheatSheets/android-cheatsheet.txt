@@ -1,0 +1,11 @@
+### Commands:
+
+
+# copy contents of folder to destination folder of device #
+adb push mySourceFolder/. /storage/emulated/0/myDestAndroidFolder/
+
+# copy folder to storage #
+adb push mySourceFolder /storage/emulated/0/
+
+# copy folder from device #
+adb pull /storage/emulated/0/mySourceFolder myDestAndroidFolder/

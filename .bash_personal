@@ -1,0 +1,14 @@
+# Set PS1 terminal prompt variable
+export PS1="\[$(tput bold)\]\[\033[38;5;1m\]\u@\h:\[$(tput sgr0)\]\[\033[38;5;11m\]\w\[$(tput sgr0)\]\[\033[38;5;33m\]\$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/')\[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;10m\]\\$\[$(tput sgr0)\]"
+
+# Aliases
+alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+alias ll="exa -ahHl"
+alias lt="exa -ahHlT"
+alias monutil="watch -n1 \"sensors && echo ------------------------------------------ && cat /proc/cpuinfo | grep MHz && echo ------------------------------------------ && free -m\""
+alias pkgupdate="sudo dnf upgrade --refresh && sudo dnf autoremove && sudo dnf clean packages"
+alias plox="sudo \"$BASH\" -c \"\$(history -p !!)\""
+alias repoclean="find -name tmp_pack_* -delete"
+
+# Terminal startup commands
+neofetch
