@@ -12,4 +12,4 @@ alias plox="sudo \"$BASH\" -c \"\$(history -p !!)\""
 alias repoclean="find -name tmp_pack_* -delete"
 
 # Terminal startup commands
-neofetch
+fastfetch
