@@ -14,4 +14,4 @@ if __name__ == "__main__":
                 l = line.split()
                 code = grc.check_for_new_release(l[0], l[1])
                 if code == 0:
-                    subprocess.run(['bash', l[2]])
+                    subprocess.run(['bash', os.path.join(script_dir, l[2])])
