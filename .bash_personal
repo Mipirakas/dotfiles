@@ -7,7 +7,7 @@ alias ip="ip --color=auto"
 alias ll="eza -agHhl"
 alias lt="eza -aT"
 alias monutil="watch -n1 \"sensors && echo ------------------------------------------ && cat /proc/cpuinfo | grep MHz && echo ------------------------------------------ && free -m\""
-alias pkgupdate="sudo dnf upgrade --refresh && sudo dnf autoremove && sudo dnf clean packages && python ~/scripts/updater.py"
+alias pkgupdate="python ~/scripts/updater.py ; sudo dnf upgrade --refresh ; sudo dnf autoremove ; sudo dnf clean packages"
 alias plox="sudo \"$BASH\" -c \"\$(history -p !!)\""
 alias repoclean="find -name tmp_pack_* -delete"
 
