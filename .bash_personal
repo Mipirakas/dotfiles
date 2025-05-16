@@ -7,9 +7,16 @@ alias ip="ip --color=auto"
 alias ll="eza -agHhl"
 alias lt="eza -aT"
 alias monutil="watch -n1 \"sensors && echo ------------------------------------------ && cat /proc/cpuinfo | grep MHz && echo ------------------------------------------ && free -m\""
-alias pkgupdate="python ~/scripts/updater.py ; sudo dnf upgrade --refresh ; sudo dnf autoremove ; sudo dnf clean packages"
-alias plox="sudo \"$BASH\" -c \"\$(history -p !!)\""
+alias pkgupdate="sudo dnf upgrade --refresh ; sudo dnf autoremove ; sudo dnf clean packages ; python ~/scripts/updater.py"
 alias repoclean="find -name tmp_pack_* -delete"
+
+plox() {
+  local last_cmd
+  last_cmd=$(fc -ln -1)
+  last_cmd=$(echo "$last_cmd" | awk '{$1=$1};1')
+  history -s "sudo $last_cmd"
+  sudo bash -c "$last_cmd"
+}
 
 # Terminal startup commands
 fastfetch
