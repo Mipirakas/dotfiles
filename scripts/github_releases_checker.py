@@ -33,9 +33,12 @@ def check_for_new_release(owner, repo):
         return 2
 
     last_releases = load_last_release()
+    last_release = ""
+    if last_releases:
+        last_release = last_releases.get(f"{owner}/{repo}")
     
-    if not last_releases or latest_release != last_releases.get(f"{owner}/{repo}"):
-        print(f"New release detected: {owner}/{repo} {latest_release}")
+    if not last_releases or latest_release != last_release:
+        print(f"New release detected: {owner}/{repo} {latest_release} from {last_release}")
         if last_releases:
             last_releases[f"{owner}/{repo}"] = latest_release
         else:
@@ -43,7 +46,7 @@ def check_for_new_release(owner, repo):
         save_last_releases(last_releases)
         return 0
     else:
-        print(f"No new release for {owner}/{repo}")
+        print(f"No new release for {owner}/{repo}, current release is {last_release}")
         return 1
 
 if __name__ == "__main__":
