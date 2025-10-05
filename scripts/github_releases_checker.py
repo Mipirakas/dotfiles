@@ -4,9 +4,9 @@ import os
 import sys
 
 # File to store last known release
-last_release_file = "last_release.json"
+last_releases_file = "last_releases.json"
 script_dir = os.path.dirname(os.path.abspath(__file__))
-file_path = os.path.join(script_dir, last_release_file)
+file_path = os.path.join(script_dir, last_releases_file)
 
 def get_latest_release(owner, repo):
     url = f"https://api.github.com/repos/{owner}/{repo}/releases/latest"
@@ -17,7 +17,7 @@ def get_latest_release(owner, repo):
         print(f"Failed to fetch release info: {response.status_code}")
         return None
 
-def load_last_release():
+def load_last_releases():
     if os.path.exists(file_path):
         with open(file_path, "r") as file:
             return json.load(file)
@@ -32,17 +32,14 @@ def check_for_new_release(owner, repo):
     if not latest_release:
         return 2
 
-    last_releases = load_last_release()
-    last_release = ""
-    if last_releases:
-        last_release = last_releases.get(f"{owner}/{repo}")
+    last_releases = load_last_releases()
+    if not last_releases:
+        last_releases = {}
+    last_release = last_releases.get(f"{owner}/{repo}")
     
-    if not last_releases or latest_release != last_release:
+    if latest_release != last_release:
         print(f"New release detected: {owner}/{repo} {latest_release} from {last_release}")
-        if last_releases:
-            last_releases[f"{owner}/{repo}"] = latest_release
-        else:
-            last_releases = {f"{owner}/{repo}": latest_release}
+        last_releases.update({f"{owner}/{repo}": latest_release})
         save_last_releases(last_releases)
         return 0
     else:
